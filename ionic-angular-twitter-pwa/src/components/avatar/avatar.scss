@@ -1,0 +1,22 @@
+avatar {
+    margin: 0 10px;
+    cursor: pointer;
+    display: inline-block;
+    ion-avatar {
+        &[type="mini"] img {
+            width: 24px;
+            height: 24px;
+        }
+        &[size="normal"] img {
+            width: 48px;
+            height: 48px;
+        }
+        &[size="bigger"] img {
+            width: 73px;
+            height: 73px;
+        }
+        img {
+            border-radius: 50%;
+        }
+    }
+}

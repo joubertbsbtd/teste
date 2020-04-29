@@ -1,0 +1,34 @@
+{
+    "routing": {
+        "index": "/index.html",
+        "routes": {
+            "/": {
+                "prefix": false
+            },
+            "/#/nav": {
+                "prefix": true
+            }
+        }
+    },
+    "dynamic": {
+        "group": [
+            {
+                "name": "twitter proxy api",
+                "urls": {
+                    "http://127.0.0.1:5000/api/": {
+                        "match": "prefix"
+                    },
+                    "https://twitter-pwa.julienrenaux.fr/api/": {
+                        "match": "prefix"
+                    }
+                },
+                "cache": {
+                    "optimizeFor": "freshness",
+                    "maxAgeMs": 3600000,
+                    "maxEntries": 20,
+                    "strategy": "lru"
+                }
+            }
+        ]
+    }
+}

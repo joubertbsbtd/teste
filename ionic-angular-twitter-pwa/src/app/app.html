@@ -1,0 +1,10 @@
+<ion-split-pane when="lg">
+  <ion-menu [content]="content" [enabled]="isMenuEnabled$ | async">
+    <ion-content>
+      <menu [content]="content"></menu>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav  #content main swipeBackEnabled="false"></ion-nav>
+</ion-split-pane>

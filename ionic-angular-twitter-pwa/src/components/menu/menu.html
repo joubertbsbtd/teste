@@ -1,0 +1,12 @@
+<!-- Generated template for the MenuComponent component -->
+<cover [user]="user$ | async" [onAvatarClick]="goToProfile"></cover>
+<ion-list no-lines class="primary-menu">
+  <button ion-item (click)="goToProfile($event)" menuClose>
+    Profile
+  </button>
+</ion-list>
+<ion-list class="misc-menu">
+  <button ion-item (click)="logout()" menuClose>
+    Log out
+  </button>
+</ion-list>

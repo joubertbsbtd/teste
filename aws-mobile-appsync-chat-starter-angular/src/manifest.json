@@ -1,0 +1,16 @@
+{
+    "name": "ChatQL",
+    "short_name": "ChatQL",
+    "start_url": "/",
+    "theme_color": "#272c31",
+    "background_color": "#272c31",
+    "display": "standalone",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "assets/img/favicons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
