@@ -1,0 +1,37 @@
+{% set name = "pytorch-metric-learning" %}
+{% set version = "0.9.84" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "46c9a06ce656cb05a5a86f2f98c13882783e66aa5d5df754220eaf24c7736c92"
+
+build:
+  number: 0
+  script: "python -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+  run:
+    - python >=3.0
+    - numpy
+    - scikit-learn
+    - tqdm
+    - pytorch
+    - torchvision
+
+about:
+  home: "https://github.com/KevinMusgrave/pytorch-metric-learning"
+  license: "MIT"
+  license_family: "MIT"
+  license_file: ""
+  summary: "The easiest way to use deep metric learning in your application. Modular, flexible, and extensible. Written in PyTorch."
+  doc_url: "https://kevinmusgrave.github.io/pytorch-metric-learning"
+  dev_url: ""
+
+extra:
+  recipe-maintainers:
+    - KevinMusgrave
