@@ -19,7 +19,7 @@ class CrossBatchMemory(torch.nn.Module):
         self.embedding_memory = self.embedding_memory.to(embeddings.device)
         self.label_memory = self.label_memory.to(labels.device)
         self.add_to_memory(embeddings, labels, batch_size)
-        
+
         if not self.has_been_filled:
             E_mem = self.embedding_memory[:self.queue_idx]
             L_mem = self.label_memory[:self.queue_idx] 
@@ -30,8 +30,7 @@ class CrossBatchMemory(torch.nn.Module):
         indices_tuple = self.create_indices_tuple(batch_size, embeddings, labels, E_mem, L_mem, input_indices_tuple)
         combined_embeddings = torch.cat([embeddings, E_mem], dim=0)
         combined_labels = torch.cat([labels, L_mem], dim=0)
-        loss = self.loss(combined_embeddings, combined_labels, indices_tuple)
-        return loss
+        return self.loss(combined_embeddings, combined_labels, indices_tuple)
 
     def add_to_memory(self, embeddings, labels, batch_size):
         end_idx = ((self.queue_idx + batch_size - 1) % (self.memory_size)) + 1
@@ -59,7 +58,7 @@ class CrossBatchMemory(torch.nn.Module):
         	indices_tuple = self.miner(embeddings, labels, E_mem, L_mem)
         else:
         	indices_tuple = lmu.get_all_pairs_indices(labels, L_mem)
-        
+
         indices_tuple = self.shift_indices_tuple(indices_tuple, batch_size)
 
         if input_indices_tuple is not None:
@@ -67,14 +66,25 @@ class CrossBatchMemory(torch.nn.Module):
                 input_indices_tuple = lmu.convert_to_pairs(input_indices_tuple, labels)
             elif len(input_indices_tuple) == 4 and len(indices_tuple) == 3:
                 input_indices_tuple = lmu.convert_to_triplets(input_indices_tuple, labels)
-            indices_tuple = tuple([torch.cat([x,y.to(x.device)], dim=0) for x,y in zip(indices_tuple, input_indices_tuple)])
+            indices_tuple = tuple(
+                torch.cat([x, y.to(x.device)], dim=0)
+                for x, y in zip(indices_tuple, input_indices_tuple)
+            )
+
 
         return indices_tuple
 
 
     def shift_indices_tuple(self, indices_tuple, batch_size):
         if len(indices_tuple) == 3:
-            indices_tuple = (indices_tuple[0],) + tuple([x+batch_size if len(x) > 0 else x for x in indices_tuple[1:]])
+            indices_tuple = (indices_tuple[0],) + tuple(
+                x + batch_size if len(x) > 0 else x for x in indices_tuple[1:]
+            )
+
         elif len(indices_tuple) == 4:
-            indices_tuple = tuple([x+batch_size if len(x) > 0 and i%2==1 else x for i,x in enumerate(indices_tuple)])
+            indices_tuple = tuple(
+                x + batch_size if len(x) > 0 and i % 2 == 1 else x
+                for i, x in enumerate(indices_tuple)
+            )
+
         return indices_tuple

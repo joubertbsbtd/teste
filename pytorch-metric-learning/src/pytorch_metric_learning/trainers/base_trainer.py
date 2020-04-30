@@ -131,8 +131,7 @@ class BaseTrainer:
 
     def compute_embeddings(self, data):
         trunk_output = self.get_trunk_output(data)
-        embeddings = self.get_final_embeddings(trunk_output)
-        return embeddings
+        return self.get_final_embeddings(trunk_output)
 
     def get_final_embeddings(self, base_output):
         return self.models["embedder"](base_output)

@@ -47,7 +47,7 @@ class DeepAdversarialMetricLearning(TrainWithClassifier):
     def update_loss_weights(self):
         self.do_metric_alone = self.epoch <= self.metric_alone_epochs
         self.do_adv_alone = self.metric_alone_epochs < self.epoch <= self.metric_alone_epochs + self.g_alone_epochs
-        self.do_both = not self.do_adv_alone and not self.do_metric_alone
+        self.do_both = not (self.do_adv_alone or self.do_metric_alone)
         self.do_adv = self.do_adv_alone or self.do_both
         self.do_metric = self.do_metric_alone or self.do_both
 

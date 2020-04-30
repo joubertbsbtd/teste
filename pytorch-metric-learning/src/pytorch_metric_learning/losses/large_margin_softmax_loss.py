@@ -27,7 +27,7 @@ class LargeMarginSoftmaxLoss(WeightRegularizerMixin, BaseMetricLossFunction):
         self.margin = int(self.margin)
         self.max_n = (self.margin // 2)
         ## For the trigonometric multiple-angle formula ##
-        self.n_range = torch.FloatTensor([n for n in range(0, self.max_n+1)])
+        self.n_range = torch.FloatTensor([n for n in range(self.max_n+1)])
         self.margin_choose_n = torch.FloatTensor([scipy.special.binom(self.margin, 2*n) for n in self.n_range])
         self.cos_powers = torch.FloatTensor([self.margin-(2*n) for n in self.n_range])
         self.alternating = torch.FloatTensor([(-1)**n for n in self.n_range])

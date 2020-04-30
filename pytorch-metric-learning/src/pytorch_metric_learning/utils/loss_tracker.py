@@ -21,10 +21,7 @@ class LossTracker:
 
     def set_loss_weights(self, loss_weight_dict):
         for k, _ in self.losses.items():
-            if k in loss_weight_dict:
-                w = loss_weight_dict[k]
-            else:
-                w = 1.0
+            w = loss_weight_dict[k] if k in loss_weight_dict else 1.0
             self.loss_weights[k] = w
 
     def update(self, loss_weight_dict):

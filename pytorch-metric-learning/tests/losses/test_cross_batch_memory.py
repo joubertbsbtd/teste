@@ -40,7 +40,7 @@ class TestCrossBatchMemory(unittest.TestCase):
         pair_miner = PairMarginMiner(pos_margin=0, neg_margin=1, use_similarity=False)
         triplet_miner = TripletMarginMiner(margin=1)
         self.loss = CrossBatchMemory(loss=ContrastiveLoss(), embedding_size=self.embedding_size, memory_size=self.memory_size)
-        for i in range(30):
+        for _ in range(30):
             embeddings = torch.randn(batch_size, self.embedding_size)
             labels = torch.arange(batch_size)
             loss = self.loss(embeddings, labels)
@@ -55,7 +55,7 @@ class TestCrossBatchMemory(unittest.TestCase):
             a1, p, a2, n = shifted
             self.assertTrue(not torch.any((all_labels[a1]-all_labels[p]).bool()))
             self.assertTrue(torch.all((all_labels[a2]-all_labels[n]).bool()))
-            
+
             indices_tuple = pair_miner(embeddings, labels, self.loss.embedding_memory, self.loss.label_memory)
             shifted = self.loss.shift_indices_tuple(indices_tuple, batch_size)
             self.assertTrue(torch.equal(indices_tuple[0], shifted[0]))
@@ -81,7 +81,7 @@ class TestCrossBatchMemory(unittest.TestCase):
         pair_miner = PairMarginMiner(pos_margin=0, neg_margin=1, use_similarity=False)
         triplet_miner = TripletMarginMiner(margin=1)
         self.loss = CrossBatchMemory(loss=ContrastiveLoss(), embedding_size=self.embedding_size, memory_size=self.memory_size)
-        for i in range(30):
+        for _ in range(30):
             embeddings = torch.randn(batch_size, self.embedding_size)
             labels = torch.arange(batch_size)
             self.loss(embeddings, labels)

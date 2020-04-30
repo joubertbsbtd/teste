@@ -46,14 +46,14 @@ class TestCalculateAccuracies(unittest.TestCase):
             acc2 = (1./5) / 5
             acc3 = (1 + 2./3) / 4
             acc4 = (1./3) / 5
-            return np.mean([acc0, acc1, acc2, acc3, acc4])
         else:
             acc0 = 0
             acc1 = (1./2) / 2
             acc2 = (1./4) / 4
             acc3 = (1./2) / 3
             acc4 = (1./2) / 4
-            return np.mean([acc0, acc1, acc2, acc3, acc4])
+
+        return np.mean([acc0, acc1, acc2, acc3, acc4])
 
     def test_get_label_counts(self):
         label_counts, num_k = accuracy_calculator.get_label_counts([0,1,3,2,3,1,3,3,4,6,5,10,4,4,4,4,6,6,5])

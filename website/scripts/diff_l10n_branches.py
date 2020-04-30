@@ -75,10 +75,10 @@ def git_exists(path, filepath):
 
 def process_diff_status(diff_status, l_commit, r_commit, src_lang_path,
                         l10n_lang_path):
-    status_letter = diff_status[0]
     filepath = diff_status[1]
 
     if git_exists(r_commit, filepath.replace(src_lang_path, l10n_lang_path)):
+        status_letter = diff_status[0]
         if status_letter == 'D':
             files_to_be_deleted.append(filepath)
         elif status_letter.startswith('R'):

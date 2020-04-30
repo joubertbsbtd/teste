@@ -62,15 +62,13 @@ def process_links(content, remote_prefix, sub_path):
         ankor = match_obj.group('ankor')
         target = match_obj.group('target')
         if not (target.startswith("https://") or
-                target.startswith("mailto:") or
-                target.startswith("#")):
+                    target.startswith("mailto:") or
+                    target.startswith("#")):
             if target.startswith("/"):
                 target_list = remote_prefix, target[1:]
-                target = "/".join(target_list)
             else:
                 target_list = remote_prefix, sub_path, target
-                target = "/".join(target_list)
-
+            target = "/".join(target_list)
         return "[%s](%s)" % (ankor, target)
 
     # Links are in the form '[text](url)'

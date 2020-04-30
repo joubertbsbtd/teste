@@ -164,10 +164,13 @@ class HookContainer:
         return None, 0
 
     def patience_remaining(self, epoch, best_epoch, patience):
-        if patience is not None and best_epoch is not None:
-            if epoch - best_epoch > patience:
-                logging.info("Validation accuracy has plateaued. Exiting.")
-                return False
+        if (
+            patience is not None
+            and best_epoch is not None
+            and epoch - best_epoch > patience
+        ):
+            logging.info("Validation accuracy has plateaued. Exiting.")
+            return False
         return True
 
     def run_tester_separately(self, tester, dataset_dict, epoch, trunk, embedder, splits_to_eval=None, collate_fn=None, skip_eval_if_already_done=True):

@@ -74,8 +74,7 @@ class BaseMetricLossFunction(torch.nn.Module):
         vec_len = self.num_class_per_param if self.num_class_per_param else 1
         if unsqueeze:
             vec_len = (vec_len, 1)
-        p = torch.nn.Parameter(torch.ones(vec_len) * init_value)
-        return p
+        return torch.nn.Parameter(torch.ones(vec_len) * init_value)
 
     def maybe_mask_param(self, param, labels):
         """
