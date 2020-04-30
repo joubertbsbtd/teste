@@ -7,13 +7,17 @@
     "node": ">=6.0"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "express": "^4.14.0",
     "google-closure-compiler-js": "^20170124.0.0",
     "node-sass": "^4.5.0",
     "nunjucks": "^3.0.0",
-    "rollup": "^0.41.4"
-  }
+    "rollup": "^0.41.4",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
