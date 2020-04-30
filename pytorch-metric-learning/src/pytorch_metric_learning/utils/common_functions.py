@@ -92,10 +92,7 @@ def longest_list(list_of_lists):
 
 
 def slice_by_n(input_array, n):
-    output = []
-    for i in range(n):
-        output.append(input_array[i::n])
-    return output
+    return [input_array[i::n] for i in range(n)]
 
 
 def unslice_by_n(input_tensors):

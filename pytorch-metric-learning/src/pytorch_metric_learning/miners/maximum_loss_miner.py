@@ -17,7 +17,7 @@ class MaximumLossMiner(BaseSubsetBatchMiner):
     def mine(self, embeddings, labels, *_):
         losses = []
         all_subset_idx = []
-        for i in range(self.num_trials):
+        for _ in range(self.num_trials):
             rand_subset_idx = c_f.NUMPY_RANDOM.choice(len(embeddings), size=self.output_batch_size, replace=False)
             rand_subset_idx = torch.from_numpy(rand_subset_idx)
             all_subset_idx.append(rand_subset_idx)

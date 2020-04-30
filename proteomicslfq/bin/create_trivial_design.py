@@ -16,9 +16,9 @@ def natural_keys(text):
     '''
     return [ atoi(c) for c in re.split(r'(\d+)', text) ]
 
-if not len(sys.argv) == 3:
-  print("Usage: MZML_FOLDER LABEL_PER_FILE")
-  exit()
+if len(sys.argv) != 3:
+    print("Usage: MZML_FOLDER LABEL_PER_FILE")
+    exit()
 
 in_path = sys.argv[1]
 label_per_file = int(sys.argv[2])
@@ -43,8 +43,8 @@ sample = 1
 condition = 1
 bioreplicate = 1
 for f in mzmls:
-  for label in range(1, label_per_file + 1): 
-    print(str(sample) + "\t" + str(condition) + "\t" + str(bioreplicate))
-    sample += 1
-    condition += 1
-    bioreplicate += 1
+    for _ in range(1, label_per_file + 1):
+        print(str(sample) + "\t" + str(condition) + "\t" + str(bioreplicate))
+        sample += 1
+        condition += 1
+        bioreplicate += 1

@@ -34,8 +34,7 @@ def mean_average_precision_at_r(knn_labels, gt_labels, embeddings_come_from_same
 
 def precision_at_k(knn_labels, gt_labels, k):
     curr_knn_labels = knn_labels[:, :k]
-    precision = np.mean(np.sum(curr_knn_labels == gt_labels, axis=1) / k)
-    return precision
+    return np.mean(np.sum(curr_knn_labels == gt_labels, axis=1) / k)
 
 def get_label_counts(reference_labels):
     unique_labels, label_counts = np.unique(reference_labels, return_counts=True)

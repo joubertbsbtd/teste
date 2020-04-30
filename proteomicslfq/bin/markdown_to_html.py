@@ -7,29 +7,28 @@ import sys
 
 def convert_markdown(in_fn):
     input_md = open(in_fn, mode="r", encoding="utf-8").read()
-    html = markdown.markdown(
-        "[TOC]\n" + input_md,
-        extensions = [
-            'pymdownx.extra',
-            'pymdownx.b64',
-            'pymdownx.highlight',
-            'pymdownx.emoji',
-            'pymdownx.tilde',
-            'toc'
-        ],
-        extension_configs = {
-            'pymdownx.b64': {
-                'base_path': os.path.dirname(in_fn)
-            },
-            'pymdownx.highlight': {
-                'noclasses': True
-            },
-            'toc': {
-                'title': 'Table of Contents'
+    return markdown.markdown(
+            "[TOC]\n" + input_md,
+            extensions = [
+                'pymdownx.extra',
+                'pymdownx.b64',
+                'pymdownx.highlight',
+                'pymdownx.emoji',
+                'pymdownx.tilde',
+                'toc'
+            ],
+            extension_configs = {
+                'pymdownx.b64': {
+                    'base_path': os.path.dirname(in_fn)
+                },
+                'pymdownx.highlight': {
+                    'noclasses': True
+                },
+                'toc': {
+                    'title': 'Table of Contents'
+                }
             }
-        }
-    )
-    return html
+        )
 
 def wrap_html(contents):
     header = """<!DOCTYPE html><html>
