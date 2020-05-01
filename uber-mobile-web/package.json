@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/webpack-dev-server --config=webpack.dev.config.js",
-    "start": "env NODE_ENV=production ./node_modules/.bin/webpack --config=webpack.prod.config.js && ./node_modules/.bin/babel-node ./src/server.js"
+    "start": "env NODE_ENV=production ./node_modules/.bin/webpack --config=webpack.prod.config.js && ./node_modules/.bin/babel-node ./src/server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -76,6 +78,8 @@
     "viewport-mercator-project": "3.0.0-beta3",
     "web-app-manifest-loader": "0.1.1",
     "webpack": "1.14.0",
-    "webpack-dev-server": "1.16.2"
-  }
+    "webpack-dev-server": "1.16.2",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
