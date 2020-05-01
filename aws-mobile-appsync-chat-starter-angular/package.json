@@ -12,7 +12,9 @@
     "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
     "build-prod-ngsw": "ng build && npm run ngsw-config && npm run ngsw-copy",
-    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 4200"
+    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 4200",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -49,7 +51,8 @@
     "typed-graphql": "^1.0.2",
     "typescript": "3.1.4",
     "uuid": "^3.1.0",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
@@ -77,5 +80,6 @@
     "protractor": "^5.2.1",
     "ts-node": "^3.3.0",
     "tslint": "^5.8.0"
-  }
+  },
+  "snyk": true
 }
