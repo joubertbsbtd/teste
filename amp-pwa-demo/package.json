@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "google-closure-compiler-js": "^20170124.0.0",
-    "node-sass": "^4.5.0",
+    "google-closure-compiler-js": "^20170218.0.0",
+    "node-sass": "^7.0.2",
     "nunjucks": "^3.0.0",
     "rollup": "^0.41.4"
   }
