@@ -201,9 +201,10 @@ debug@2.6.7:
   dependencies:
     ms "2.0.0"
 
-deep-extend@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+deep-extend@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.5.1.tgz#b894a9dd90d3023fbf1c55a394fb858eb2066f1f"
+  integrity sha512-N8vBdOa+DF7zkRrDCsaOXoCs/E2fJfx9B9MrKnnSiHNh4ws7eSys6YQE4KvT1cecKmOASYQBhbKjeuDD9lT81w==
 
 delayed-stream@~1.0.0:
   version "1.0.0"
@@ -871,11 +872,12 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
-twitter@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/twitter/-/twitter-1.7.0.tgz#2882e208e0ad83bb226528613561f1dd233ac94b"
+twitter@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/twitter/-/twitter-1.7.1.tgz#0762378f1dc1c050e48f666aca904e24b1a962f4"
+  integrity sha512-Do7l/WzFnUZC14ABtZfDiOHKl6M9Ft5tE4YF0ev9XLm4yh7m8R98D82rzeDAMjbjMZk2R/tb6sgXXb3sPKoaVw==
   dependencies:
-    deep-extend "^0.4.1"
+    deep-extend "^0.5.0"
     request "^2.72.0"
 
 type-is@~1.6.15:
